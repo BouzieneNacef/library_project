@@ -9,6 +9,8 @@ class Addres(models.Model):
     city= models.CharField(max_length=100)
     country= models.CharField(max_length=100)
     postCode= models.PositiveIntegerField()
+    def __str__(self):
+        return self.city
 
 class Editor(models.Model):
     #id= models.BigAutoField(primary_key=True)
@@ -18,6 +20,8 @@ class Editor(models.Model):
     TelephoneNumber = models.CharField(max_length=20)
     # describe the relashionship between Editor and Adress(one-to-one):
     Addres =models.OneToOneField(Addres, on_delete=models.CASCADE, null=True, blank=True)
+    def __str__(self):
+        return self.name
     
 class Book(models.Model):
     isbnCode = models.CharField(max_length=20, primary_key=True, default='0000')
@@ -30,6 +34,8 @@ class Book(models.Model):
     #relaseDate = models.DateField(default=timezone.now)
     # describe the relashionship between Editor and Adress(many-to-one):
     Editor= models.ForeignKey(Editor, on_delete=models.CASCADE, null=True, blank=True)
+    def __str__(self):
+        return self.title
     
 class Author(models.Model):
     #id= models.BigAutoField(primary_key=True)
@@ -39,6 +45,8 @@ class Author(models.Model):
     # describe the relashionship between Editor and Adress(many-to-many):
     #writing is the name of association table
     writing= models.ManyToManyField(Book)
+    def __str__(self):
+        return self.name
 
 
 
