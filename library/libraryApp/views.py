@@ -1,13 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-# Create your views here.
+def ahla(request):
+    return render(request, 'welcome.html')
 
 def home(request):
-    return HttpResponse("home")
+    return HttpResponse("this is the second page")
 
-def book(request):
-    return HttpResponse("book")
-
-def about(request):
-    return HttpResponse("about")
